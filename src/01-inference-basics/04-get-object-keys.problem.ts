@@ -12,6 +12,7 @@ const testingFrameworks = {
   },
 };
 
-type TestingFramework = unknown;
+// https://www.typescriptlang.org/docs/handbook/2/keyof-types.html
+type TestingFramework = keyof typeof testingFrameworks
 
 type tests = [Expect<Equal<TestingFramework, "vitest" | "jest" | "mocha">>];
