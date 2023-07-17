@@ -6,6 +6,9 @@
  * One of the type declarations below is an enum.
  *
  * Which is which?
+ * A) Discriminated union.
+ * B) Union.
+ * C) Enum.
  */
 
 type A =

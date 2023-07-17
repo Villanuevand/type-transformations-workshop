@@ -9,13 +9,18 @@ export const programModeEnumMap = {
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
 } as const;
 
-export type IndividualProgram = unknown;
+// My solution
+type ProgramModeEnumMap = typeof programModeEnumMap[keyof typeof programModeEnumMap];
+export type IndividualProgram = Exclude<ProgramModeEnumMap, "group" | "announcement">
+
+// Matt's solutions checks, next files 11-indexed-access-with-unions.solution.1.ts and 11-indexed-access-with-unions.solution.2.ts
+
 
 type tests = [
   Expect<
-    Equal<
-      IndividualProgram,
-      "1on1" | "selfDirected" | "planned1on1" | "plannedSelfDirected"
-    >
+      Equal<
+          IndividualProgram,
+          "1on1" | "selfDirected" | "planned1on1" | "plannedSelfDirected"
+      >
   >,
 ];

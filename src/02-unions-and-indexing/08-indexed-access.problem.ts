@@ -1,4 +1,4 @@
-import { Equal, Expect } from "../helpers/type-utils";
+import {Equal, Expect} from "../helpers/type-utils";
 
 export const fakeDataDefaults = {
   String: "Default string",
@@ -7,12 +7,26 @@ export const fakeDataDefaults = {
   Boolean: true,
   ID: "id",
 };
+// Index access
+// https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html
 
-export type StringType = unknown;
-export type IntType = unknown;
-export type FloatType = unknown;
-export type BooleanType = unknown;
-export type IDType = unknown;
+// My solution
+export type StringType = typeof fakeDataDefaults.String;
+export type IntType = typeof fakeDataDefaults.Int;
+export type FloatType = typeof fakeDataDefaults.Float;
+export type BooleanType = typeof fakeDataDefaults.Boolean;
+export type IDType = typeof fakeDataDefaults.ID;
+
+// Matt solutions:
+/*
+type FakeDataDefaults = typeof fakeDataDefaults;
+export type StringType = FakeDataDefaults["String"];
+export type IntType = FakeDataDefaults["Int"];
+export type FloatType = FakeDataDefaults["Float"];
+export type BooleanType = FakeDataDefaults["Boolean"];
+export type IDType = FakeDataDefaults["ID"];
+*/
+
 
 type tests = [
   Expect<Equal<StringType, string>>,
