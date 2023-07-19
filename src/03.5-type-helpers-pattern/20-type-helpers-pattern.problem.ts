@@ -1,6 +1,8 @@
-import { Equal, Expect } from "../helpers/type-utils";
+import {Equal, Expect} from "../helpers/type-utils";
+// https://www.typescriptlang.org/docs/handbook/2/generics.html
 
-type ReturnWhatIPassIn = unknown;
+// My solution
+type ReturnWhatIPassIn<T> = T;
 
 type tests = [
   Expect<Equal<ReturnWhatIPassIn<1>, 1>>,

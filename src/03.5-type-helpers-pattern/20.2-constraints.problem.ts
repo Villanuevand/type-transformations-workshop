@@ -1,6 +1,9 @@
-import { Equal, Expect } from "../helpers/type-utils";
+import {Equal, Expect} from "../helpers/type-utils";
+// https://www.typescriptlang.org/docs/handbook/2/generics.html#generic-constraints
 
-type AddRoutePrefix<TRoute> = `/${TRoute}`;
+// My solution
+// extends means "must be"
+type AddRoutePrefix<TRoute extends string> = `/${TRoute}`;
 
 type tests = [
   Expect<Equal<AddRoutePrefix<"">, "/">>,

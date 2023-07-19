@@ -1,18 +1,19 @@
-import { Equal, Expect } from "../helpers/type-utils";
+import {Equal, Expect} from "../helpers/type-utils";
 
-type CreateDataShape = {
-  data: unknown;
-  error: unknown;
+//My solution
+type CreateDataShape<T, E> = {
+    data: T;
+    error: E;
 };
 
 type tests = [
-  Expect<
-    Equal<
-      CreateDataShape<string, TypeError>,
-      {
-        data: string;
-        error: TypeError;
-      }
+    Expect<
+        Equal<
+            CreateDataShape<string, TypeError>,
+            {
+                data: string;
+                error: TypeError;
+            }
     >
   >,
   Expect<
