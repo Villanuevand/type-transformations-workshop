@@ -9,14 +9,16 @@ const getServerSideProps = async () => {
     },
   };
 };
+// My solution - not working
+//type InferPropsFromServerSideFunction<T> = T extends ()=> infer PData ? Awaited<PData> : never ;
 
-type InferPropsFromServerSideFunction = unknown;
-
+// Matt's solution
+type InferPropsFromServerSideFunction<T> = T extends () => Promise<{ props: infer TData }> ? TData : never;
 type tests = [
   Expect<
-    Equal<
-      InferPropsFromServerSideFunction<typeof getServerSideProps>,
-      { json: { title: string } }
-    >
+      Equal<
+          InferPropsFromServerSideFunction<typeof getServerSideProps>,
+          { json: { title: string } }
+      >
   >
 ];
